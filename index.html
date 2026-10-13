@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tiny Click Counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #f3f4f6;
+        color: #1f2937;
+        font-family: system-ui, sans-serif;
+      }
+
+      main {
+        width: min(100% - 2rem, 22rem);
+        padding: 2rem;
+        border-radius: 1rem;
+        background: white;
+        box-shadow: 0 12px 32px #1f29371a;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.5rem;
+      }
+
+      p {
+        margin: 0;
+        color: #6b7280;
+      }
+
+      output {
+        display: block;
+        margin: 1.5rem 0;
+        font-size: 4rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+      }
+
+      button {
+        padding: 0.7rem 1rem;
+        border: 0;
+        border-radius: 0.6rem;
+        background: #4f46e5;
+        color: white;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #4338ca;
+      }
+
+      button:focus-visible {
+        outline: 3px solid #a5b4fc;
+        outline-offset: 3px;
+      }
+
+      button.secondary {
+        background: #e5e7eb;
+        color: #374151;
+      }
+
+      button.secondary:hover {
+        background: #d1d5db;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Tiny Click Counter</h1>
+      <p>Press the button to try it out.</p>
+      <output id="count" aria-live="polite">0</output>
+      <div class="buttons">
+        <button id="increment" type="button">Add one</button>
+        <button id="reset" class="secondary" type="button">Reset</button>
+      </div>
+    </main>
+
+    <script>
+      const countOutput = document.querySelector("#count");
+      let count = 0;
+
+      document.querySelector("#increment").addEventListener("click", () => {
+        count += 1;
+        countOutput.textContent = count;
+      });
+
+      document.querySelector("#reset").addEventListener("click", () => {
+        count = 0;
+        countOutput.textContent = count;
+      });
+    </script>
+  </body>
+</html>
